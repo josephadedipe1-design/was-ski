@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the WAS '27 list</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)),
+        url("images/background.jpg") center/cover no-repeat;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      color: #0b1b34;
+    }
+
+    .container {
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn .9s ease;
+    }
+
+    .logo {
+     width:200px;
+max-width:45vw;
+margin:0 auto 18px;
+display:block;
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+
+    .sub {
+      font-size: 15px;
+      color: rgba(0, 0, 0, .65);
+      margin-bottom: 26px;
+      line-height: 1.5;
+    }
+
+    .party-label {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .party-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .party-buttons button {
+      width: 46px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, .15);
+      background: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .party-buttons button.active {
+      background: #2d8df0;
+      color: white;
+      border: none;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .16);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, .38);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow:
+        0 28px 70px rgba(0, 0, 0, .18),
+        inset 0 1px 0 rgba(255, 255, 255, .4);
+      text-align: left;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 14px;
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      height: 48px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, .15);
+      padding: 0 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      background: rgba(255,255,255,.88);
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(0, 0, 0, .15);
+      margin: 20px 0;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .member {
+      display: grid;
+      grid-template-columns: 1fr 170px auto;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: end;
+    }
+
+    .remove {
+      background: none;
+      border: none;
+      color: #2d8df0;
+      font-weight: 600;
+      cursor: pointer;
+      padding-top: 12px;
+    }
+
+    .add {
+      background: none;
+      border: none;
+      color: #2d8df0;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 6px;
+      padding: 0;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 18px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .checkbox input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .cta {
+      width: 100%;
+      height: 58px;
+      border: none;
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #7fcfff 0%, #2f86e9 100%);
+      box-shadow:
+        0 10px 24px rgba(47, 134, 233, .22),
+        inset 0 1px 0 rgba(255, 255, 255, .45),
+        inset 0 -2px 6px rgba(0, 0, 0, .08);
+      transition: .2s;
+    }
+
+    .cta::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 6px;
+      height: 42%;
+      border-radius: 999px;
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.42) 0%,
+        rgba(255,255,255,.14) 55%,
+        rgba(255,255,255,0) 100%
+      );
+      pointer-events: none;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 14px 28px rgba(47, 134, 233, .28),
+        inset 0 1px 0 rgba(255, 255, 255, .5),
+        inset 0 -2px 6px rgba(0, 0, 0, .1);
+    }
+
+    .cta:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+    }
+
+    .message {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .message.success {
+      display: block;
+      background: rgba(34, 197, 94, 0.12);
+      color: #166534;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+
+    .message.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.12);
+      color: #991b1b;
+      border: 1px solid rgba(239, 68, 68, 0.25);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, .55);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid,
+      .member {
+        grid-template-columns: 1fr;
+      }
+
+      .remove {
+        padding-top: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="images/was-logo.png" class="logo" alt="WAS logo">
+
+    <h1>Join the WAS '27 list</h1>
+
+    <p class="sub">
+      Sign up to get early updates on the next White As Snow ski trip. No spam — just trip details.
+    </p>
+
+    <div class="party-label">How many people are in your party?</div>
+
+    <div class="party-buttons">
+      <button type="button" class="active" onclick="setParty(1,this)">1</button>
+      <button type="button" onclick="setParty(2,this)">2</button>
+      <button type="button" onclick="setParty(3,this)">3</button>
+      <button type="button" onclick="setParty(4,this)">4+</button>
+    </div>
+
+    <div class="card">
+      <form id="signupForm">
+        <div class="grid">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Full name" required>
+          </div>
+
+          <div class="field">
+            <label for="age">Age</label>
+            <select id="age" name="age" required>
+              <option value="" selected disabled>Select age</option>
+              <option value="0 to 16">0 to 16</option>
+              <option value="17 to 21">17 to 21</option>
+              <option value="22+">22+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@email.com" required>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-title">Additional people in your party</div>
+
+        <div id="members"></div>
+
+        <button type="button" class="add" onclick="addMember()">
+          + Add another person
+        </button>
+
+        <div class="checkbox">
+          <input id="consent" name="consent" type="checkbox" required>
+          <label for="consent">
+            I agree to be contacted about White As Snow trip updates.
+          </label>
+        </div>
+
+        <button type="submit" class="cta" id="submitBtn">Join the WAS '27 list ❄️</button>
+
+        <div id="formMessage" class="message"></div>
+
+        <div class="footer">
+          We won't share your details.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyb4meEwbBb060RPP93RTjKqGM09y4NdxX91LX4JZ8b_X9iNEtx7P8M4IO-pCHLN2A/exec";
+
+    let members = 0;
+    let partySize = 1;
+
+    function setParty(size, btn) {
+      document.querySelectorAll(".party-buttons button")
+        .forEach(b => b.classList.remove("active"));
+
+      btn.classList.add("active");
+      partySize = size;
+
+      const target = size - 1;
+
+      while (members < target) {
+        addMember();
+      }
+
+      while (members > target) {
+        const last = document.querySelector("#members").lastElementChild;
+        if (last) {
+          last.remove();
+          members--;
+        }
+      }
+    }
+
+    function addMember() {
+      members++;
+
+      const div = document.createElement("div");
+      div.className = "member";
+
+      div.innerHTML = `
+        <div class="field">
+          <label>Full name</label>
+          <input type="text" class="member-name" placeholder="Full name">
+        </div>
+
+        <div class="field">
+          <label>Age</label>
+          <select class="member-age">
+            <option value="" selected disabled>Select</option>
+            <option value="0 to 16">0 to 16</option>
+            <option value="17 to 21">17 to 21</option>
+            <option value="22+">22+</option>
+          </select>
+        </div>
+
+        <button type="button" class="remove" onclick="removeMember(this)">Remove</button>
+      `;
+
+      document.getElementById("members").appendChild(div);
+    }
+
+    function removeMember(btn) {
+      const row = btn.closest(".member");
+      if (row) {
+        row.remove();
+        members--;
+      }
+    }
+
+    function showMessage(type, text) {
+      const msg = document.getElementById("formMessage");
+      msg.className = `message ${type}`;
+      msg.textContent = text;
+    }
+
+    function clearMessage() {
+      const msg = document.getElementById("formMessage");
+      msg.className = "message";
+      msg.textContent = "";
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      clearMessage();
+
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
+      const memberNames = Array.from(document.querySelectorAll(".member-name"));
+      const memberAges = Array.from(document.querySelectorAll(".member-age"));
+
+      const payload = {
+        fullName: document.getElementById("fullName").value.trim(),
+        age: document.getElementById("age").value,
+        email: document.getElementById("email").value.trim(),
+        partySize: partySize,
+        consent: document.getElementById("consent").checked ? "Yes" : "No"
+      };
+
+      // Up to 10 additional people columns
+      for (let i = 0; i < 10; i++) {
+        payload[`member${i + 1}Name`] = memberNames[i]?.value.trim() || "";
+        payload[`member${i + 1}Age`] = memberAges[i]?.value || "";
+      }
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          showMessage("success", "You're on the list ❄️");
+          document.getElementById("signupForm").reset();
+          document.getElementById("members").innerHTML = "";
+          members = 0;
+          partySize = 1;
+
+          document.querySelectorAll(".party-buttons button")
+            .forEach((btn, index) => btn.classList.toggle("active", index === 0));
+        } else {
+          showMessage("error", "Something went wrong. Please try again.");
+          console.error(result.error);
+        }
+      } catch (error) {
+        showMessage("error", "Submission failed. Please try again.");
+        console.error(error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Join the WAS '27 list ❄️";
+      }
+    });
+  </script>
+
+</body>
+</html>
